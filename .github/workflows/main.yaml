@@ -34,8 +34,9 @@ jobs:
         run: echo "${{ secrets.DEVELOPMENT_ENV_FILE }}" > .env
 
       - name: Build development app
-        run: flutter build apk --split-per-abi --no-shrink
-        run: mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/development-app.apk
+        run: |
+              flutter build apk --split-per-abi --no-shrink
+              mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/development-app.apk
 
       - name: Send development app to discord
         uses: sinshutu/upload-to-discord@master
@@ -48,8 +49,9 @@ jobs:
         run: echo "${{ secrets.PRODUCTION_ENV_FILE }}" > .env
 
       - name: Build production app
-        run: flutter build apk --split-per-abi --no-shrink
-        run: mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/production-app.apk
+        run: |
+              flutter build apk --split-per-abi --no-shrink
+              mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/production-app.apk
 
       - name: Send production app to discord
         uses: sinshutu/upload-to-discord@master
